@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+
+    body {
+        font-family: Helvetica, sans-serif;
+        background-color: #ccc;
+    }
+
+    h1{
+        width: 99%;
+        margin: auto;
+        color: #25384b;
+        font-size: 24px;
+        padding: 10px 0px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #25384b;
+    }
+
+    .agenda {
+        margin-top: 100px;
+    }
+
+    nav{
+        font-size: 16px;
+        position: fixed;
+        background-color: #25384b;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 90%;
+        margin: auto;
+        padding: 10px 0px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    nav ul{
+        text-align: right;
+        margin-right: 100px;
+    }
+
+    nav li{
+        display: inline;
+        margin: 0 15px;
+        list-style-type: none;
+    }
+
+    nav li a{
+        text-decoration: none;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 1px;
+    }
+
+    nav li a.active{
+        color: white;
+        background-color: none;
+        border-bottom: 3px solid #597FA5;
+        padding: 10px 3px;
+    }
+
+    table {
+        text-align: center;
+        border-spacing:0 15px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 20px 10px;
+    }
+
+    th {
+        background-color: #597FA5;
+        color: #fff;
+        font-size: 14px;
+        font-weight: lighter;
+        text-transform: uppercase;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    main {
+        background-color: none;
+        margin: auto;
+        width: 90%;
+        padding: 1%;
+    }
+
+    th:first-child, td:first-child {
+        border-top-left-radius: 10px; 
+        border-bottom-left-radius: 10px;
+    }
+
+    th:last-child, td:last-child {
+        border-bottom-right-radius: 10px; 
+        border-top-right-radius: 10px; 
+    }
+
+    .agd {
+        border-collapse:separate;
+        border-spacing:0 15px;
+    }
+
+</style>
+
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a class='active' href="">Agenda</a></li>
+            <li><a href="">Perfil</a></li>
+            <li><a href="">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="agenda">
+            <h1>Minha Agenda</h1>
+            <table class='agd'>
+                <tr class="cabecalho">
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Treinamento</th>
+                    <th>Acessar</th>
+                </tr>
+                <tr>
+                    <td>12/12/2021</td>
+                    <td>Pendente</td>
+                    <td>Exemplo de treinamento</td>
+                    <td><a href="">Acessar</a></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>12/12/2021</td>
+                    <td>Pendente</td>
+                    <td>Exemplo de treinamento</td>
+                    <td><a href="">Acessar</a></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>12/12/2021</td>
+                    <td>Pendente</td>
+                    <td>Exemplo de treinamento</td>
+                    <td><a href="">Acessar</a></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>
