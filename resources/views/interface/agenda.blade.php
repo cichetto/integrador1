@@ -20,31 +20,31 @@
     <main>
         <div class="agenda">
             <h1>Minha Agenda</h1>
-            <table class='agd'>
+            <table>
                 <tr class="cabecalho">
+                    <th>Treinamento</th>
                     <th>Data</th>
                     <th>Status</th>
-                    <th>Treinamento</th>
                     <th>Acessar</th>
                 </tr>
                 <tr>
+                    <td>Exemplo de treinamento</td>
                     <td>12/12/2021</td>
                     <td>Pendente</td>
-                    <td>Exemplo de treinamento</td>
                     <td><a href="">Acessar</a></td>
                 </tr>
                 </tr>
                 <tr>
+                    <td>Exemplo de treinamento</td>
                     <td>12/12/2021</td>
                     <td>Pendente</td>
-                    <td>Exemplo de treinamento</td>
                     <td><a href="">Acessar</a></td>
                 </tr>
                 </tr>
                 <tr>
+                    <td>Exemplo de treinamento</td>
                     <td>12/12/2021</td>
                     <td>Pendente</td>
-                    <td>Exemplo de treinamento</td>
                     <td><a href="">Acessar</a></td>
                 </tr>
             </table>

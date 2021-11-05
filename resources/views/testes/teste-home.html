@@ -10,6 +10,7 @@
 
     body {
         font-family: Helvetica, sans-serif;
+        color: #010101;
         background-color: #ccc;
     }
 
@@ -23,8 +24,8 @@
         border-bottom: 1px solid #25384b;
     }
 
-    .agenda {
-        margin-top: 100px;
+    .list {
+        
     }
 
     nav{
@@ -66,50 +67,75 @@
         padding: 10px 3px;
     }
 
-    table {
-        text-align: center;
-        border-spacing:0 15px;
+    .list table {
+        text-align: left;
         border-collapse: collapse;
         width: 100%;
     }
 
-    th, td {
-        padding: 20px 10px;
+    .list th, .list td {
+        padding: 10px 15px;
     }
 
-    th {
-        background-color: #597FA5;
-        color: #fff;
+    .list th {
+        color: #828282;
         font-size: 14px;
-        font-weight: lighter;
-        text-transform: uppercase;
+        font-weight: normal;
+        text-transform: none;
     }
 
-    td {
-        background-color: #fff;
+    .list td {
+        border-top: 2px solid #F2F2F2;
     }
 
     main {
-        background-color: none;
+        
         margin: auto;
         width: 90%;
         padding: 1%;
     }
 
-    th:first-child, td:first-child {
-        border-top-left-radius: 10px; 
-        border-bottom-left-radius: 10px;
+    section {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 100px;
     }
 
-    th:last-child, td:last-child {
-        border-bottom-right-radius: 10px; 
-        border-top-right-radius: 10px; 
+    .filter-form-table {
+        width: 500px;
     }
 
-    .agd {
-        border-collapse:separate;
-        border-spacing:0 15px;
+    .filter table{
+        margin-bottom: 20px;
     }
+
+    .filter td {
+        font-size: 12px;
+        padding: 0px;
+    }
+
+    .filter label{
+        font-weight: bold;
+    }
+
+    .filter input{
+        font-size: 14px;
+        padding: 6px 6px;
+        border: none;
+        border-top: 1px solid #000;
+        background-color: #F2F2F2;
+    }
+
+    .filter button{
+        color: #fff;
+        font-size: 14px;
+        border: none;
+        padding: 6px 6px;
+        background-color: #6B7FF2;
+        letter-spacing: 0.5px;
+    }
+
 
 </style>
 
@@ -125,37 +151,47 @@
     </nav>
 
     <main>
-        <div class="agenda">
-            <h1>Minha Agenda</h1>
-            <table class='agd'>
-                <tr class="cabecalho">
-                    <th>Data</th>
-                    <th>Status</th>
-                    <th>Treinamento</th>
-                    <th>Acessar</th>
-                </tr>
-                <tr>
-                    <td>12/12/2021</td>
-                    <td>Pendente</td>
-                    <td>Exemplo de treinamento</td>
-                    <td><a href="">Acessar</a></td>
-                </tr>
-                </tr>
-                <tr>
-                    <td>12/12/2021</td>
-                    <td>Pendente</td>
-                    <td>Exemplo de treinamento</td>
-                    <td><a href="">Acessar</a></td>
-                </tr>
-                </tr>
-                <tr>
-                    <td>12/12/2021</td>
-                    <td>Pendente</td>
-                    <td>Exemplo de treinamento</td>
-                    <td><a href="">Acessar</a></td>
-                </tr>
-            </table>
-        </div>
+        <section>
+            <div class="filter">
+                <form action="" method="get" id="filtro">
+                    <table class="filter-form-table">
+                        <tr>
+                            <td><label for="fname">Pesquisar</label></td>
+                            <td><label for="lname">Ordenação</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="fname" name="fname"></td>
+                            <td><input type="text" id="lname" name="lname"></td>
+                            <td><button type="submit" form="filtro" value="Filtrar">Filtrar</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+                
+            <div class="list">
+                <table>
+                    <tr class="cabecalho">
+                        <th>Treinamento</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Acessar</th>
+                    </tr>
+                    <tr>
+                        <td>Exemplo de treinamento</td>
+                        <td>12/12/2021</td>
+                        <td>Pendente</td>
+                        <td><a href="">Acessar</a></td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td>Exemplo de treinamento</td>
+                        <td>12/12/2021</td>
+                        <td>Pendente</td>
+                        <td><a href="">Acessar</a></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
     </main>
 
 </body>

@@ -87,6 +87,7 @@ h1{
 }
 
 .agenda {
+    font-size: 16px;
     margin-top: 100px;
 }
 
@@ -129,18 +130,28 @@ nav li a.active{
     padding: 10px 3px;
 }
 
-table {
+.agenda table {
+    border-collapse:separate;
+    border-spacing:0 15px;
     text-align: center;
     border-spacing:0 15px;
     border-collapse: collapse;
     width: 100%;
 }
 
-th, td {
+.agenda table a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #597FA5;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.agenda th, td {
     padding: 20px 10px;
 }
 
-th {
+.agenda th {
     background-color: #597FA5;
     color: #fff;
     font-size: 14px;
@@ -148,8 +159,9 @@ th {
     text-transform: uppercase;
 }
 
-td {
+.agenda td {
     background-color: #fff;
+    border-top: 1px solid #ccc;
 }
 
 main {
@@ -157,19 +169,4 @@ main {
     margin: auto;
     width: 90%;
     padding: 1%;
-}
-
-th:first-child, td:first-child {
-    border-top-left-radius: 10px; 
-    border-bottom-left-radius: 10px;
-}
-
-th:last-child, td:last-child {
-    border-bottom-right-radius: 10px; 
-    border-top-right-radius: 10px; 
-}
-
-.agd {
-    border-collapse:separate;
-    border-spacing:0 15px;
 }
