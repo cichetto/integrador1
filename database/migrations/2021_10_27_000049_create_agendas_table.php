@@ -15,12 +15,21 @@ class CreateAgendasTable extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->integer('usuario')->nullable();
-            $table->integer('grupo')->nullable();
-            $table->integer('area')->nullable();
-            $table->integer('treinamento');
-            $table->integer('prazo')->nullable();
+            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->unsignedBigInteger('grupo_id')->nullable();
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->unsignedBigInteger('treinamento_id');
+            $table->date('prazo')->nullable();
+            $table->timestamps();
+
+            //constraint
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('grupo_id')->references('id')->on('grupos');
+            $table->foreign('area_id')->references('id')->on('areas');
+            $table->foreign('treinamento_id')->references('id')->on('treinamentos');
         });
+
+        
     }
 
     /**

@@ -13,15 +13,15 @@ class CreateTreinamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('treinamento', function (Blueprint $table) {
+        Schema::create('treinamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->string('descricao');
-            $table->integer('grupo')->nullable();
-            $table->integer('area')->nullable();
-            $table->timestamp('validade')->nullable();
-            $table->string('celulas');
-            $table->string('anexo');
+            $table->string('titulo', 75);
+            $table->text('descricao');
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->date('validade')->nullable();
+            $table->text('celulas');
+            $table->text('anexo');
+            $table->timestamps();
         });
     }
 

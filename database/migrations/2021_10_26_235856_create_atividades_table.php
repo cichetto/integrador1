@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 
 class CreateAtividadesTable extends Migration
@@ -13,13 +14,14 @@ class CreateAtividadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('atividade', function (Blueprint $table) {
+        Schema::create('atividades', function (Blueprint $table) {
             $table->id();
-            $table->integer('usuario');
-            $table->integer('treinamento');
-            $table->timestamp('data_inicio');
-            $table->timestamp('data_fim');
-            $table->string('status'); // Constante
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('treinamento_id');
+            $table->dateTime('data_inicio');
+            $table->dateTime('data_fim');
+            $table->char('status', 1)->default('a'); // Constante
+            $table->timestamps();
         });
     }
 

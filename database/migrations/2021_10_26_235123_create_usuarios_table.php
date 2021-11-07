@@ -13,15 +13,16 @@ class CreateUsuariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('login', 50)->unique();
             $table->string('senha', 15);
             $table->integer('cadastro')->unique();
-            $table->string('nome');
-            $table->integer('area');
-            $table->integer('grupo');
-            $table->char('tipo'); // Constante
+            $table->string('nome', 70);
+            $table->unsignedBigInteger('grupo_id');
+            $table->unsignedBigInteger('area_id');
+            $table->char('tipo', 1)->default('a'); // Constante
+            $table->timestamps();
         });
     }
 

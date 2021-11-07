@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAreasTable extends Migration
+class AlterAtividadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->id();
-            $table->string('descricao', 75);
-            $table->timestamps();
+        Schema::table('atividades', function (Blueprint $table) {
+            // Constraints
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('treinamento_id')->references('id')->on('treinamentos');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateAreasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('area');
+        //
     }
 }
