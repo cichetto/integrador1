@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Area;
 
 class grupoController extends Controller
 {
@@ -25,5 +26,18 @@ class grupoController extends Controller
     }
 
     // Funções públicas ===============================================================================
+
+    public static function grupoList(){
+        $areaCollection = Area::all();
+        $areaData = $areaCollection->toArray();
+
+        $list = array();
+        foreach($areaData as $area){
+            $list[$area['id']] = $area['descricao'];
+        }
+
+        return $list;
+    }
+
     // Funções protegidas =============================================================================
 }

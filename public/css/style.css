@@ -257,12 +257,19 @@ a {
 
 .filter table{
     width: 90%;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.filter th {
+    text-transform: none;
+    font-size: 12px;
+    padding: 10px 10px 0px 10px;
+    border: none;
 }
 
 .filter td {
     font-size: 12px;
-    padding: 0px;
+    padding: 0px 10px;
     border: none;
 }
 
@@ -270,11 +277,12 @@ a {
     font-weight: bold;
 }
 
-.filter input{
+.filter input, .filter select{
+    width: 100%;
     font-size: 14px;
-    padding: 6px 6px;
+    padding: 6px;
     border: none;
-    border-top: 1px solid #000;
+    border: 1px solid #ccc;
     background-color: #F2F2F2;
 }
 

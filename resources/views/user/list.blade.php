@@ -23,28 +23,73 @@
                 <form action="{{ route('user.list') }}" method="get" id="filtro">
                     <table>
                         <tr>
-                            <td><label for="id">ID</label></td>
-                            <td><label for="login">Login</label></td>
-                            <td><label for="cadastro">Cadastro</label></td>
-                            <td><label for="nome">Nome</label></td>
+                            <th><label for="id">ID</label></th>
+                            <th><label for="login">Login</label></th>
+                            <th><label for="cadastro">Cadastro</label></th>
+                            <th><label for="nome">Nome</label></th>
                         </tr>
                         <tr>
-                            <td><input type="text" id="id" name="id"></td>
-                            <td><input type="text" id="login" name="login"></td>
-                            <td><input type="text" id="cadastro" name="cadastro"></td>
-                            <td><input type="text" id="nome" name="nome"></td>
+                            <td><input type="text" id="id" name="id" value={{ $allData['formData']['id'] }}></td>
+                            <td><input type="text" id="login" name="login" value={{ $allData['formData']['login'] }}></td>
+                            <td><input type="text" id="cadastro" name="cadastro" value={{ $allData['formData']['cadastro'] }}></td>
+                            <td><input type="text" id="nome" name="nome" value={{ $allData['formData']['nome'] }}></td>
                         </tr>
                         <tr>
-                            <td><label for="grupo_id">Grupo</label></td>
-                            <td><label for="area_id">Area</label></td>
-                            <td><label for="tipo">Tipo</label></td>
-                            <td><label for="order">Ordenação</label></td>
+                            <th><label for="grupo_id">Grupo</label></th>
+                            <th><label for="area_id">Area</label></th>
+                            <th><label for="tipo">Tipo</label></th>
+                            <th><label for="order">Ordenação</label></th>
                         </tr>
                         <tr>
-                            <td><input type="text" id="grupo_id" name="grupo_id"></td>
-                            <td><input type="text" id="area_id" name="area_id"></td>
-                            <td><input type="text" id="tipo" name="tipo"></td>
-                            <td><input type="text" id="order" name="order"></td>
+                            <td>
+                            <select name="grupo_id" id="grupo_id">
+                                <option value="" select></option>
+                                @foreach ($allData['grupoData'] as $grupoId => $grupoDesc)
+                                    @if($grupoId == $allData['formData']['grupo_id'])
+                                        <option value="{{$grupoId}}" select>{{$grupoDesc}}</option>
+                                    @else
+                                        <option value="{{$grupoId}}">{{$grupoDesc}}</option>
+                                    @endif
+                                @endforeach
+
+                            </select>
+                            </td>
+                            <td>
+                            <select name="area_id" id="area_id">
+                                <option value="" select></option>
+                                @foreach ($allData['areaData'] as $area)
+                                    @if($area['id'] == $allData['formData']['area_id'])
+                                        <option value="{{$area['id']}}" selected>{{$area['descricao']}}</option>
+                                    @else
+                                        <option value="{{$area['id']}}">{{$area['descricao']}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            </td>
+                            <td>
+                                <select name="tipo" id="tipo">
+                                    <option value="" select></option>
+                                    @foreach ($allData['tiposData'] as $key=>$value)
+                                        @if($key == $allData['formData']['tipo'])
+                                            <option value="{{$key}}" select>{{$value}}</option>
+                                        @else
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select name="order" id="order">
+                                    <option value="" select></option>
+                                    @foreach ($allData['orderList'] as $key=>$value)
+                                        @if($key == $allData['formData']['order'])
+                                            <option value="{{$key}}" select>{{$value}}</option>
+                                        @else
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </td>
                             <td><button type="submit" form="filtro" value="Filtrar">Filtrar</button></td>
                         </tr>
 

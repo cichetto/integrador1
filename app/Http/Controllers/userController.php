@@ -64,8 +64,6 @@ class userController extends Controller
      */
     public function edit(){
 
-        $userID = $this->_id;
-
         if (isset($_GET['id']) && $_GET['id'] != ''){
             $userID = $_GET['id'];
         }
@@ -120,12 +118,47 @@ class userController extends Controller
      */
     public function list($msg = ''){
 
-        $userData = $this->getUsersData($_GET);
+        $formData = [
+            'id' => '',
+            'login' => '',
+            'cadastro' => '',
+            'nome' => '',
+            'grupo_id' => '',
+            'area_id' => '',
+            'tipo' => '',
+            'order' => '',
+        ];
 
-        $allData['userData'] = $userData;
-        $allData['mensagem'] = $msg;
+        if ($_GET) {
+            $formData = $_GET;
+        }
 
-        return view('user.list', compact('allData')); // Envia $userData para a View
+        print_r($formData);
+
+        $userData = $this->getUsersData($formData);
+
+        $areaCollection = Area::all();
+        $areaData = $areaCollection->toArray();
+
+        $grupoData = grupoController::grupoList();
+
+        $tipos = $this->getUserTipos();
+
+        $orderList = $this->listOrder();
+
+        $allData['areaData']  = $areaData;
+        $allData['grupoData'] = $grupoData;
+        $allData['tiposData'] = $tipos;
+        $allData['orderList'] = $orderList;
+        $allData['formData']  = $formData;
+        $allData['userData']  = $userData;
+        $allData['mensagem']  = $msg;
+
+        
+        print_r($allData['grupoData']);
+        print_r($allData['formData']['grupo_id']);
+
+        return view('user.list', compact('allData'));
     }
 
     /**
@@ -211,55 +244,78 @@ class userController extends Controller
 
     protected function getUsersData($filter = array()){
 
-        $usuario = new Usuario;
         $hasFilter = false;
-
-        print_r($filter);
+        $where = array();
 
         if (isset($filter['id']) && $filter['id'] != ''){
-            $usuario->where('id', '=', $filter['id']);
+            $where[] = ['id', '=', $filter['id']];
             $hasFilter = true;
         }
 
         if (isset($filter['login']) && $filter['login'] != ''){
-            $usuario->where('login', 'like', $filter['login']);
+            $where[] = ['login', 'like', '%'.$filter['login'].'%'];
             $hasFilter = true;
         }
 
         if (isset($filter['cadastro']) && $filter['cadastro'] != ''){
-            $usuario->where('cadastro', 'like', $filter['cadastro']);
+            $where[] = ['cadastro', 'like', '%'.$filter['cadastro'].'%'];
             $hasFilter = true;
         }
 
         if (isset($filter['nome']) && $filter['nome'] != ''){
-            $usuario->where('nome', 'like', $filter['nome']);
+            $where[] = ['nome', 'like', '%'.$filter['nome'].'%'];
             $hasFilter = true;
         }
 
+        if (isset($filter['grupo_id']) && $filter['grupo_id'] != ''){
+            $where[] = ['grupo_id', '=', $filter['grupo_id']];
+            $hasFilter = true;
+        }
+        
+
         if (isset($filter['area_id']) && $filter['area_id'] != ''){
-            $usuario->where('area_id', 'like', $filter['area_id']);
+            $where[] = ['area_id', '=', $filter['area_id']];
             $hasFilter = true;
         }
 
         if (isset($filter['tipo']) && $filter['tipo'] != ''){
-            $usuario->where('tipo', '=', $filter['tipo']);
+            $where[] = ['tipo', '=', $filter['tipo']];
             $hasFilter = true;
         }
 
         if (isset($filter['order']) && $filter['order'] != ''){
-            $usuario->whereorderBy($filter['order'], 'asc');
-            $hasFilter = true;
-        }
 
-        print_r($usuario);
-        if ($hasFilter) {
-            $userCollection = $usuario->get();
-        } else {
-            $userCollection = $usuario->all();
+            if ($hasFilter) {
+                $userCollection = Usuario::where($where)->orderBy($filter['order'], 'asc')->get();
+            } else {
+                $userCollection = Usuario::orderBy($filter['order'], 'asc')->get();
+            }
+
+        } else{
+
+            if ($hasFilter) {
+                $userCollection = Usuario::where($where)->get();
+            } else {
+                $userCollection = Usuario::all();
+            }
+
         }
 
         $userData = $userCollection->toArray();
 
         return $userData;
+    }
+
+    private function listOrder(){
+        $options = array();
+        $options['id'] = 'ID';
+        $options['login'] = 'Login';
+        $options['cadastro'] = 'Cadastro';
+        $options['nome'] = 'Nome';
+        $options['grupo_id'] = 'Grupo';
+        $options['area_id'] = 'Area';
+        $options['tipo'] = 'Tipo';
+
+        return $options;
     }
 }
