@@ -104,12 +104,12 @@
                     <tr class="cabecalho">
                         <th>Opções</th>
                         <th>ID</th>
-                        <th>login</th>
-                        <th>cadastro</th>
-                        <th>nome</th>
-                        <th>grupo_id</th>
-                        <th>area_id</th>
-                        <th>tipo</th>
+                        <th>Login</th>
+                        <th>Cadastro</th>
+                        <th>Nome</th>
+                        <th>Grupo</th>
+                        <th>Area</th>
+                        <th>Tipo</th>
                     </tr>
 
                     @foreach ($allData['userData'] as $user)
@@ -123,9 +123,9 @@
                         <td>{{$user['login']}}</td>
                         <td>{{$user['cadastro']}}</td>
                         <td>{{$user['nome']}}</td>
-                        <td>{{$user['grupo_id']}}</td>
-                        <td>{{$user['area_id']}}</td>
-                        <td>{{$user['tipo']}}</td>
+                        <td>{{$allData['grupoData'][$user['grupo_id']]}}</td>
+                        <td>{{$allData['areaData'][$user['area_id']]}}</td>
+                        <td>{{$allData['tiposData'][$user['tipo']]}}</td>
                         </tr>
                     @endforeach
                 </table>
