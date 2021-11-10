@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Area;
 
 class areaController extends Controller
 {
@@ -25,5 +26,6 @@ class areaController extends Controller
     }
 
     // Funções públicas ===============================================================================
+
     // Funções protegidas =============================================================================
 }

@@ -15,6 +15,8 @@
 
             <h1>Consultar Usuários</h1>
 
+            <a class="botao-basico" href="{{ route('user.add') }}">Adicionar Usuário</a><br><br>
+
             @if($allData['mensagem'] != '')
                 <p>{{$allData['mensagem']}}</p>
             @endif
@@ -44,11 +46,11 @@
                             <td>
                             <select name="grupo_id" id="grupo_id">
                                 <option value="" select></option>
-                                @foreach ($allData['grupoData'] as $grupoId => $grupoDesc)
-                                    @if($grupoId == $allData['formData']['grupo_id'])
-                                        <option value="{{$grupoId}}" select>{{$grupoDesc}}</option>
+                                @foreach ($allData['grupoData'] as $key => $value)
+                                    @if($key == $allData['formData']['grupo_id'])
+                                        <option value="{{$key}}" selected>{{$value}}</option>
                                     @else
-                                        <option value="{{$grupoId}}">{{$grupoDesc}}</option>
+                                        <option value="{{$key}}">{{$value}}</option>
                                     @endif
                                 @endforeach
 
@@ -57,11 +59,11 @@
                             <td>
                             <select name="area_id" id="area_id">
                                 <option value="" select></option>
-                                @foreach ($allData['areaData'] as $area)
-                                    @if($area['id'] == $allData['formData']['area_id'])
-                                        <option value="{{$area['id']}}" selected>{{$area['descricao']}}</option>
+                                @foreach ($allData['areaData'] as $key => $value)
+                                    @if($key == $allData['formData']['area_id'])
+                                        <option value="{{$key}}" selected>{{$value}}</option>
                                     @else
-                                        <option value="{{$area['id']}}">{{$area['descricao']}}</option>
+                                        <option value="{{$key}}">{{$value}}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -69,9 +71,9 @@
                             <td>
                                 <select name="tipo" id="tipo">
                                     <option value="" select></option>
-                                    @foreach ($allData['tiposData'] as $key=>$value)
+                                    @foreach ($allData['tiposData'] as $key => $value)
                                         @if($key == $allData['formData']['tipo'])
-                                            <option value="{{$key}}" select>{{$value}}</option>
+                                            <option value="{{$key}}" selected>{{$value}}</option>
                                         @else
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endif
@@ -81,9 +83,9 @@
                             <td>
                                 <select name="order" id="order">
                                     <option value="" select></option>
-                                    @foreach ($allData['orderList'] as $key=>$value)
+                                    @foreach ($allData['orderList'] as $key => $value)
                                         @if($key == $allData['formData']['order'])
-                                            <option value="{{$key}}" select>{{$value}}</option>
+                                            <option value="{{$key}}" selected>{{$value}}</option>
                                         @else
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endif

@@ -27,7 +27,7 @@
                 <input type="text" id="login" name="login" value='{{ $allData['userData']['login'] }}' readonly><br><br>
 
                 <label for="senha">Senha:</label><br>
-                <input type="text" id="senha" name="senha" value='{{ $allData['userData']['senha'] }}' readonly><br><br>
+                <input type="password" id="senha" name="senha" value='{{ $allData['userData']['senha'] }}' readonly><br><br>
 
                 <label for="cadastro">Cadastro:</label><br>
                 <input type="text" id="cadastro" name="cadastro" value='{{ $allData['userData']['cadastro'] }}' readonly><br><br>

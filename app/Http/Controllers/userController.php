@@ -25,13 +25,9 @@ class userController extends Controller
      */
     public function add(){
         
-        $areaCollection = Area::all();
-        $areaData = $areaCollection->toArray();
-
-        $grupoCollection = Grupo::all();
-        $grupoData = $grupoCollection->toArray();
-
-        $tipos = $this->getUserTipos();
+        $areaData   = Area::areaList();
+        $grupoData  = Grupo::grupoList();
+        $tipos      = $this->tiposList();
 
         $allData = array();
         $allData['areaData']  = $areaData;
@@ -75,13 +71,9 @@ class userController extends Controller
         $userCollection = Usuario::find($userID);
         $userData = $userCollection->toArray();
 
-        $areaCollection = Area::all();
-        $areaData = $areaCollection->toArray();
-
-        $grupoCollection = Grupo::all();
-        $grupoData = $grupoCollection->toArray();
-
-        $tipos = $this->getUserTipos();
+        $areaData   = Area::areaList();
+        $grupoData  = GRupo::grupoList();
+        $tipos      = $this->tiposList();
 
         $allData = array();
         $allData['userData']  = $userData;
@@ -119,32 +111,25 @@ class userController extends Controller
     public function list($msg = ''){
 
         $formData = [
-            'id' => '',
-            'login' => '',
-            'cadastro' => '',
-            'nome' => '',
-            'grupo_id' => '',
-            'area_id' => '',
-            'tipo' => '',
-            'order' => '',
+            'id'        => '',
+            'login'     => '',
+            'cadastro'  => '',
+            'nome'      => '',
+            'grupo_id'  => '',
+            'area_id'   => '',
+            'tipo'      => '',
+            'order'     => '',
         ];
 
         if ($_GET) {
             $formData = $_GET;
         }
 
-        print_r($formData);
-
-        $userData = $this->getUsersData($formData);
-
-        $areaCollection = Area::all();
-        $areaData = $areaCollection->toArray();
-
-        $grupoData = grupoController::grupoList();
-
-        $tipos = $this->getUserTipos();
-
-        $orderList = $this->listOrder();
+        $areaData   = Area::areaList();
+        $grupoData  = Grupo::grupoList();
+        $userData   = $this->getData($formData);
+        $orderList  = $this->orderList();
+        $tipos      = $this->tiposList();
 
         $allData['areaData']  = $areaData;
         $allData['grupoData'] = $grupoData;
@@ -153,10 +138,6 @@ class userController extends Controller
         $allData['formData']  = $formData;
         $allData['userData']  = $userData;
         $allData['mensagem']  = $msg;
-
-        
-        print_r($allData['grupoData']);
-        print_r($allData['formData']['grupo_id']);
 
         return view('user.list', compact('allData'));
     }
@@ -182,18 +163,15 @@ class userController extends Controller
         $userCollection = Usuario::find($userID);
         $userData = $userCollection->toArray();
 
-        $areaCollection = Area::find($userData['area_id']);
-        $areaData = $areaCollection->toArray();
+        $areaData   = Area::getDescricao($userData['area_id']);
+        $grupoData  = Grupo::getDescricao($userData['grupo_id']);
 
-        $grupoCollection = Grupo::find($userData['grupo_id']);
-        $grupoData = $grupoCollection->toArray();
-
-        $tipos = $this->getUserTipos();
+        $tipos = $this->tiposList();
 
         $allData = array();
         $allData['userData']  = $userData;
-        $allData['areaData']  = $areaData['descricao'];
-        $allData['grupoData'] = $grupoData['descricao'];
+        $allData['areaData']  = $areaData;
+        $allData['grupoData'] = $grupoData;
         $allData['tiposData'] = $tipos[$userData['tipo']];
 
         return view('user.remove', compact('allData'));
@@ -211,18 +189,15 @@ class userController extends Controller
         $userCollection = Usuario::find($userID);
         $userData = $userCollection->toArray();
 
-        $areaCollection = Area::find($userData['area_id']);
-        $areaData = $areaCollection->toArray();
+        $areaData   = Area::getDescricao($userData['area_id']);
+        $grupoData  = Grupo::getDescricao($userData['grupo_id']);
 
-        $grupoCollection = Grupo::find($userData['grupo_id']);
-        $grupoData = $grupoCollection->toArray();
-
-        $tipos = $this->getUserTipos();
+        $tipos = $this->tiposList();
 
         $allData = array();
         $allData['userData']  = $userData;
-        $allData['areaData']  = $areaData['descricao'];
-        $allData['grupoData'] = $grupoData['descricao'];
+        $allData['areaData']  = $areaData;
+        $allData['grupoData'] = $grupoData;
         $allData['tiposData'] = $tipos[$userData['tipo']];
 
         return view('user.view', compact('allData'));
@@ -230,7 +205,7 @@ class userController extends Controller
 
     // Funções públicas ===============================================================================
 
-    public function getUserTipos(){
+    public function tiposList(){
 
         $tipos = array();
         $tipos[self::TIPO_COLABORADOR]   = 'Colaborador';
@@ -242,7 +217,7 @@ class userController extends Controller
 
     // Funções protegidas =============================================================================
 
-    protected function getUsersData($filter = array()){
+    protected function getData($filter = array()){
 
         $hasFilter = false;
         $where = array();
@@ -306,7 +281,7 @@ class userController extends Controller
         return $userData;
     }
 
-    private function listOrder(){
+    private function orderList(){
         $options = array();
         $options['id'] = 'ID';
         $options['login'] = 'Login';

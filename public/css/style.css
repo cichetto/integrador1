@@ -77,35 +77,20 @@ body {
     background-color: #ccc;
 }
 
-/*
-h1{
-    width: 99%;
-    margin: auto;
-    color: #25384b;
-    font-size: 24px;
-    padding: 10px 0px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #25384b;
-}
-*/
-
-.agenda {
-    font-size: 16px;
-    margin-top: 100px;
-}
+/* BARRA DE NAVEGAÇÃO
+-----------------------------------------------------------------------*/
 
 nav{
     font-size: 16px;
+    background-color: white;
     position: fixed;
-    background-color: #25384b;
     top: 0;
     left: 0;
     right: 0;
     width: 90%;
     margin: auto;
-    padding: 10px 0px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 5px 0px;
+    border-bottom: 1px solid #ccc;
 }
 
 nav ul{
@@ -115,22 +100,23 @@ nav ul{
 
 nav li{
     display: inline;
-    margin: 0 15px;
     list-style-type: none;
 }
 
 nav li a{
     text-decoration: none;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 1px;
 }
 
 nav li a.active{
-    color: white;
-    background-color: none;
-    border-bottom: 3px solid #597FA5;
-    padding: 10px 3px;
+}
+
+/*-----------------------------------------------------------------------*/
+
+
+.agenda {
+    font-size: 16px;
+    margin-top: 100px;
 }
 
 .agenda table {
@@ -188,6 +174,7 @@ a {
     color: #aaa;
     font-size: 16px;
     padding: 6px 0px;
+    margin-bottom: 30px;
     text-transform: uppercase;
     border-bottom: 2px solid #ccc;
 }

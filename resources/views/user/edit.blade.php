@@ -31,7 +31,7 @@
                 <input type="text" id="login" name="login" placeholder="Login" value='{{ $allData['userData']['login'] }}'><br><br>
 
                 <label for="senha">Senha:</label><br>
-                <input type="text" id="senha" name="senha" placeholder="Senha" value='{{ $allData['userData']['senha'] }}'><br><br>
+                <input type="password" id="senha" name="senha" placeholder="Senha" value='{{ $allData['userData']['senha'] }}'><br><br>
 
                 <label for="cadastro">Cadastro:</label><br>
                 <input type="text" id="cadastro" name="cadastro" placeholder="Cadastro" value='{{ $allData['userData']['cadastro'] }}'><br><br>
@@ -41,22 +41,22 @@
 
                 <label for="grupo_id">Grupo:</label><br>
                 <select name="grupo_id" id="grupo_id">
-                    @foreach ($allData['grupoData'] as $grupo)
-                        @if($grupo['id'] == $allData['userData']['grupo_id'])
-                            <option value="{{$grupo['id']}}" select>{{$grupo['descricao']}}</option>
+                     @foreach ($allData['grupoData'] as $key => $value)
+                        @if($key == $allData['userData']['grupo_id'])
+                            <option value="{{$key}}" selected>{{$value}}</option>
                         @else
-                            <option value="{{$grupo['id']}}">{{$grupo['descricao']}}</option>
+                            <option value="{{$key}}">{{$value}}</option>
                         @endif
                     @endforeach
                 </select><br><br>
 
                 <label for="area_id">Area:</label><br>
                 <select name="area_id" id="area_id">
-                    @foreach ($allData['areaData'] as $area)
-                        @if($area['id'] == $allData['userData']['area_id'])
-                            <option value="{{$area['id']}}" selected>{{$area['descricao']}}</option>
+                     @foreach ($allData['areaData'] as $key => $value)
+                        @if($key == $allData['userData']['area_id'])
+                            <option value="{{$key}}" selected>{{$value}}</option>
                         @else
-                            <option value="{{$area['id']}}">{{$area['descricao']}}</option>
+                            <option value="{{$key}}">{{$value}}</option>
                         @endif
                     @endforeach
                 </select><br><br>

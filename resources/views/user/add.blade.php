@@ -12,6 +12,8 @@
     <main>
 
         <section class="window-basico">
+
+            <a class="botao-basico" href="{{ route('user.list') }}">Voltar</a><br><br>
             
             <h1>Adicionar Usuário</h1>
             
@@ -26,7 +28,7 @@
                 <input type="text" id="login" name="login" placeholder="Login"><br><br>
 
                 <label for="senha">Senha:</label><br>
-                <input type="text" id="senha" name="senha" placeholder="Senha"><br><br>
+                <input type="password" id="senha" name="senha" placeholder="Senha"><br><br>
 
                 <label for="cadastro">Cadastro:</label><br>
                 <input type="text" id="cadastro" name="cadastro" placeholder="Cadastro"><br><br>
@@ -36,21 +38,21 @@
 
                 <label for="grupo_id">Grupo:</label><br>
                 <select name="grupo_id" id="grupo_id">
-                    @foreach ($allData['grupoData'] as $grupo)
-                        <option value="{{$grupo['id']}}">{{$grupo['descricao']}}</option>
+                    @foreach ($allData['grupoData'] as $key => $value)
+                        <option value="{{$key}}">{{$value}}</option>
                     @endforeach
                 </select><br><br>
 
                 <label for="area_id">Area:</label><br>
                 <select name="area_id" id="area_id">
-                    @foreach ($allData['areaData'] as $area)
-                        <option value="{{$area['id']}}">{{$area['descricao']}}</option>
+                    @foreach ($allData['areaData'] as $key => $value)
+                        <option value="{{$key}}">{{$value}}</option>
                     @endforeach
                 </select><br><br>
 
                 <label for="tipo">Tipo de usuário:</label><br>
                 <select name="tipo" id="tipo">
-                    @foreach ($allData['tiposData'] as $key=>$value)
+                    @foreach ($allData['tiposData'] as $key => $value)
                         <option value="{{$key}}">{{$value}}</option>
                     @endforeach
                 </select><br><br>
