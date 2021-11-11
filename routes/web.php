@@ -45,6 +45,11 @@ Route::prefix('/grupo')->group(function(){
 });
 
 Route::prefix('/treinamento')->group(function(){
+    Route::post('/add',     [treinamentoController::class, 'add'])->name('treinamento.add');
+    Route::post('/edit',    [treinamentoController::class, 'edit'])->name('treinamento.edit');
+    Route::post('/list',    [treinamentoController::class, 'list'])->name('treinamento.list');
+    Route::post('/rel',     [treinamentoController::class, 'rel'])->name('treinamento.rel');
+    Route::post('/remove',  [treinamentoController::class, 'remove'])->name('treinamento.remove');
     Route::get('/add',      [treinamentoController::class, 'add'])->name('treinamento.add');
     Route::get('/edit',     [treinamentoController::class, 'edit'])->name('treinamento.edit');
     Route::get('/list',     [treinamentoController::class, 'list'])->name('treinamento.list');

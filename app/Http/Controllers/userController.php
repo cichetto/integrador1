@@ -281,7 +281,8 @@ class userController extends Controller
         return $userData;
     }
 
-    private function orderList(){
+    protected function orderList(){
+        
         $options = array();
         $options['id'] = 'ID';
         $options['login'] = 'Login';

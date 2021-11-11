@@ -123,8 +123,8 @@
                         <td>{{$user['login']}}</td>
                         <td>{{$user['cadastro']}}</td>
                         <td>{{$user['nome']}}</td>
-                        <td>{{$allData['grupoData'][$user['grupo_id']]}}</td>
-                        <td>{{$allData['areaData'][$user['area_id']]}}</td>
+                        <td>{{$user['grupo_id'].' - '.$allData['grupoData'][$user['grupo_id']]}}</td>
+                        <td>{{$user['area_id'].' - '.$allData['areaData'][$user['area_id']]}}</td>
                         <td>{{$allData['tiposData'][$user['tipo']]}}</td>
                         </tr>
                     @endforeach
