@@ -9,6 +9,8 @@
 <body>
 
     <h1>Editar Treinamento</h1>
+
+    teste
     
 </body>
 </html>
